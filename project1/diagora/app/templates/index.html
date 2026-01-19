@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row h-100">
+    <!-- Sidebar -->
+    <div class="col-md-3 col-lg-2 sidebar bg-light p-3">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-2 text-muted">
+            <span>Hizli Kontroller</span>
+        </h6>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link quick-question" href="#" data-question="Concurrent Manager durumu nasil?">
+                    <i class="bi bi-gear"></i> Concurrent Manager
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link quick-question" href="#" data-question="Stuck workflow var mi?">
+                    <i class="bi bi-arrow-repeat"></i> Workflow Durumu
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link quick-question" href="#" data-question="Invalid object var mi?">
+                    <i class="bi bi-exclamation-triangle"></i> Invalid Objects
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link quick-question" href="#" data-question="Tablespace doluluk orani nedir?">
+                    <i class="bi bi-hdd"></i> Tablespace Durumu
+                </a>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h6 class="sidebar-heading px-3 mt-3 mb-2 text-muted">
+            <span>Sistem Durumu</span>
+        </h6>
+        <div class="px-3">
+            <div class="d-flex align-items-center mb-2">
+                <span class="status-indicator" id="db-status"></span>
+                <small class="ms-2">Veritabani</small>
+            </div>
+            <div class="d-flex align-items-center">
+                <span class="status-indicator" id="llm-status"></span>
+                <small class="ms-2">LLM Servisi</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Chat Area -->
+    <div class="col-md-9 col-lg-10 chat-container d-flex flex-column">
+        <!-- Chat Messages -->
+        <div class="chat-messages flex-grow-1 p-3" id="chat-messages">
+            <div class="welcome-message text-center py-5">
+                <i class="bi bi-robot display-1 text-primary"></i>
+                <h4 class="mt-3">Diagora'ya Hosgeldiniz</h4>
+                <p class="text-muted">
+                    Oracle EBS sisteminiz hakkinda sorular sorabilirsiniz.<br>
+                    Ornegin: "Concurrent Manager'larda sorun var mi?" veya "Tablespace doluluk durumu nedir?"
+                </p>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="chat-input-area p-3 border-top">
+            <form id="question-form">
+                <div class="input-group">
+                    <input type="text"
+                           class="form-control form-control-lg"
+                           id="question-input"
+                           placeholder="Oracle EBS hakkinda bir soru sorun..."
+                           autocomplete="off">
+                    <button class="btn btn-primary btn-lg" type="submit" id="send-btn">
+                        <i class="bi bi-send"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
